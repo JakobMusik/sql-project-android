@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ucla_blue"
+    android:layout_marginBottom="60dp"
+
+    tools:ignore="MissingClass">
+
+    <com.databaseproj.caltracker.view.Coolbar
+        android:id="@+id/coolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:elevation="0dp"
+        app:title="@string/app_name">
+
+        <ImageButton
+            android:id="@+id/btnLeft"
+            style="@style/SAICoolbarImageButton"
+            android:contentDescription="TODO"
+            android:visibility="gone"
+            app:coolbar_gravity="start"
+            app:srcCompat="@drawable/left"
+            tools:ignore="MissingPrefix" />
+
+        <ImageButton
+            android:id="@+id/btnRight"
+            style="@style/SAICoolbarImageButton"
+            android:contentDescription="TODO"
+            app:srcCompat="@drawable/ic_date_range_white_24dp" />
+
+    </com.databaseproj.caltracker.view.Coolbar>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:orientation="vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <TextView
+            android:id="@+id/AnalyzeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="Thursday, Apr 1, 2021"
+            android:textColor="#FF726E" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/framelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            app:cardBackgroundColor="#63609C"
+
+            app:cardCornerRadius="10dp">
+
+
+            <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+                android:id="@+id/circular_progress"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center|end"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:direction="clockwise"
+                app:dotColor="?colorPrimary"
+                app:enableProgressAnimation="true"
+                app:formattingPattern=""
+                app:progressColor="@color/btn_logut_bg"
+                app:progressStrokeWidth="5dp"
+                app:textColor="#fff" />
+
+            <FrameLayout
+                android:id="@+id/framelayout1"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+
+                android:layout_marginBottom="8dp"
+                android:gravity="center|start">
+
+
+                <LinearLayout
+                    android:id="@+id/layoutinfocalorie"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="26dp"
+                    android:layout_weight="33.326"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/calorietext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|start"
+
+
+                        android:text="2021"
+                        android:textColor="#fff"
+                        android:textSize="38sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/infocalorie"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|start"
+                        android:text="Calories to goal"
+                        android:textColor="#fff" />
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/framelayout2"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/framelayout"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="#63609C"
+            app:cardCornerRadius="10dp">
+
+
+            <LinearLayout
+                android:id="@+id/layoutdetails"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+
+                <LinearLayout
+                    android:id="@+id/layoutdetailsname1"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="33.326"
+                    android:background="#001f96ee"
+                    android:orientation="vertical"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:id="@+id/proteinValueEditTextn"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="30"
+                        android:gravity="center|start"
+                        android:paddingStart="8dp"
+                        android:text="Proteins"
+                        android:textColor="#fff"
+
+                        />
+
+
+                    <TextView
+                        android:id="@+id/proteinValueEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="60"
+                        android:gravity="center|start"
+                        android:paddingStart="8dp"
+                        android:text="555gr"
+                        android:textColor="#fff"
+
+
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+                        android:id="@+id/simpleProgressBar"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:indeterminate="false"
+
+                        android:indeterminateTint="?colorPrimary"
+                        android:indeterminateTintMode="src_atop"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp" />
+
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:background="#fff">
+
+                </View>
+
+
+                <LinearLayout
+                    android:id="@+id/layoutdetailsname2"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="33.326"
+                    android:background="#0000b94d"
+                    android:orientation="vertical"
+                    android:weightSum="100">
+
+
+                    <TextView
+                        android:id="@+id/carbohydratesValueEditTextn"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="30"
+                        android:gravity="center|start"
+                        android:paddingStart="8dp"
+                        android:text="Carbs"
+                        android:textColor="#fff"
+
+                        />
+
+
+                    <TextView
+                        android:id="@+id/carbohydratesValueEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="60"
+                        android:gravity="center|start"
+                        android:paddingStart="8dp"
+                        android:text="555gr"
+                        android:textColor="#fff"
+
+
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+
+                    <ProgressBar
+                        android:id="@+id/simpleProgressBar1"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:background="#fff"
+
+
+                    >
+
+                </View>
+
+
+                <LinearLayout
+                    android:id="@+id/layoutdetailsname3"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="33.326"
+                    android:background="#00d60469"
+
+                    android:orientation="vertical"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:id="@+id/fatValueEditTextn"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="30"
+                        android:gravity="center|start"
+                        android:paddingStart="8dp"
+                        android:text="Fat"
+                        android:textColor="#fff"
+
+                        />
+
+
+                    <TextView
+                        android:id="@+id/fatValueEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="60"
+                        android:gravity="center|start"
+                        android:paddingStart="8dp"
+                        android:text="555gr"
+                        android:textColor="#fff"
+
+
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+
+                    <ProgressBar
+                        android:id="@+id/simpleProgressBar2"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/framelayout2"
+            android:orientation="vertical">
+
+
+            <ListView
+                android:id="@+id/AnalyzeList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:cacheColorHint="#fff"
+                android:divider="#fff"
+                android:dividerHeight="0.2dp"
+                android:scrollbars="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            <TextView
+                android:id="@+id/empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Didn't enter any data today!" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/AnalyzeLisvvv"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:background="#663096">
+
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="152dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left|center_vertical"
+                    android:gravity="center"
+                    android:text="New Text"
+                    android:textColor="#fff" />
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="10dp"
+        app:elevation="8dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="12dp"
+        fab:menu_animationDelayPerItem="0"
+        fab:menu_colorNormal="@color/accent"
+        fab:menu_colorPressed="@color/accent"
+        fab:menu_colorRipple="@color/accent"
+        fab:menu_icon="@drawable/fab_add"
+        fab:menu_shadowColor="#444">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab12"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_food_apple_white_24dp"
+            fab:fab_label="Add eaten food" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab22"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_white_24dp"
+            fab:fab_label="Add new food" />
+
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

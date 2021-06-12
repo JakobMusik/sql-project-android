@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CaloriesTracker</string>
+
+
+    <string name="add_to_database_button_string">add to database</string>
+    <string name="add_to_diet_button_string">add to diet</string>
+
+    <string name="delete_question">Are you sure you want to delete?</string>
+    <string name="positive_string">Yes</string>
+    <string name="negative_string">No</string>
+    <string name="no_product_found">No product found.</string>
+
+
+    <string name="help_tips">To achieve good results You can:\n\n
+	1. Reduce workout to 30-40 minutes (longer workout can cause muscle burning)\n\n
+	2. Warm-up!  It is essential to prepare the muscles, warm-up about 5 minutes to prevent injuries.\n\n
+	3. Cool down! After workout spend additional 5 minutes for slow jogging in order to remove lactic acid which can cause cramps and stiffness.\n\n
+	4. Eat more proteins! They help build muscles, drink one protein shake before and one after the workout.\n\n
+	5. Listen to your body! When you feel pain in your chest area stop running and walk until You feel better.\n\n
+	6. Don\'t expect results after one week, it will take about one month until You see results, but belive me it\'s worth waiting!\n\n
+	7. Train with friend! There is no better motivator than another person! 
+	</string>
+
+
+    <string name="helloactivity_headline">Hello.</string>
+    <string name="helloactivity_terms">Terms of Use</string>
+    <string name="helloactivity_subhead">Just a few things to get you started~.</string>
+    <string name="helloactivity_age">Age</string>
+    <string name="helloactivity_weight">Weight</string>
+
+    <string name="helloactivity_height">Height</string>
+    <string name="helloactivity_share_data">Share anonymous data for research.</string>
+    <string name="helloactivity_hint_settings">You can change these in settings later.</string>
+    <string name="helloactivity_button_start">GET STARTED</string>
+    <string name="helloactivity_textview_tos">By using this app, you are agreeing to the</string>
+
+
+    <string name="helloactivity_spinner_exercise">Your activity level</string>
+    <string name="helloactivity_spinner_sedentary">Sedentary (Little exercise)</string>
+    <string name="helloactivity_spinner_light">Light exercise</string>
+    <string name="helloactivity_spinner_moderate">Moderate exercise</string>
+    <string name="helloactivity_spinner_heavy">Heavy exercise</string>
+    <string name="helloactivity_spinner_veryheavy">Very Heavy exercise</string>
+
+    <string-array name="helloactivity_daily_exercise" translatable="true">
+        <item>"(not selected)"</item>
+        <item>@string/helloactivity_spinner_sedentary</item>
+        <item>@string/helloactivity_spinner_light</item>
+        <item>@string/helloactivity_spinner_moderate</item>
+        <item>@string/helloactivity_spinner_heavy</item>
+        <item>@string/helloactivity_spinner_veryheavy</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_camera">CameraActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+
+</resources>

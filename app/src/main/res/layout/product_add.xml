@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/ucla_blue"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            app:hintTextColor="@color/accent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            >
+
+            <EditText
+                android:id="@+id/edittext1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:background="#343752"
+
+                android:hint="Name of product"
+                android:singleLine="true"
+                android:textSize="18sp"
+                 />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:weightSum="2"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+android:layout_gravity="center"
+            android:orientation="horizontal">
+
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Solid"
+                android:layout_weight="1"
+                android:id="@+id/radioButtonLeft"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Liquid"
+                android:layout_weight="1"
+                android:id="@+id/radioButtonRight"
+                android:layout_gravity="center_horizontal" />
+
+
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:hintTextColor="@color/accent"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/edittext2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:digits="0123456789"
+                android:hint="Calories / 100g"
+                android:inputType="numberDecimal|number"
+                android:singleLine="true"
+                android:background="#343752"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:hintTextColor="@color/accent"
+
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/edittext3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:digits="0123456789"
+                android:hint="Proteins / 100g"
+                android:inputType="numberDecimal|number"
+                android:singleLine="true"
+                android:background="#343752"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:hintTextColor="@color/accent"
+
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/edittext4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:digits="0123456789"
+                android:hint="Carbs / 100g"
+                android:inputType="numberDecimal|number"
+                android:singleLine="true"
+                android:background="#343752"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:hintTextColor="@color/accent"
+
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/edittext5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:digits="0123456789"
+                android:hint="Fat / 100g"
+                android:background="#343752"
+
+                android:inputType="numberDecimal|number"
+                android:singleLine="true"
+            />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:hintTextColor="@color/accent"
+
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/edittext6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:digits="0123456789"
+                    android:hint="Barcode (optional)"
+                    android:inputType="numberDecimal|number"
+                    android:singleLine="true"
+                    android:background="#343752"
+                     />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_save_white_24dp"
+        app:backgroundTint="@color/accent"
+        app:borderWidth="0dp"
+        app:elevation="8dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="12dp" />
+
+
+</RelativeLayout>

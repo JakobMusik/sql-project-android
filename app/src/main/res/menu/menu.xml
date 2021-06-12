@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/calendar"
+        android:title="Calendar"
+        android:orderInCategory="500"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_date_range_white_24dp"
+        android:visible="true"/>
+
+    <item android:id="@+id/editdiet"
+        android:title="Edit Plan"
+        android:orderInCategory="600"
+        app:showAsAction="never"
+        android:visible="true"/>
+    <item android:id="@+id/editprofile"
+        android:title="Edit Profile"
+        android:orderInCategory="600"
+        app:showAsAction="never"
+        android:visible="true"/>
+
+</menu>

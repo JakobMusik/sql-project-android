@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.databaseproj.caltracker"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.AUDIO" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name">
+
+        <activity
+            android:name=".view.IntroActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".view.AdvancedPlanActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.LicenseActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.FeatureActivity1"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.FeatureActivity2"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.FeatureActivity3"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.CameraActivity"
+            android:label="@string/title_activity_camera"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.AddProductActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.HelpActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.ShowProductActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.ManualProductSearchActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.EditPlanActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.UserActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.MainActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+    </application>
+
+</manifest>

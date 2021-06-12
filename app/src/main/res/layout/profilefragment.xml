@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:background="@color/ucla_blue"
+
+    tools:ignore="MissingClass">
+    <com.databaseproj.caltracker.view.Coolbar
+        android:id="@+id/coolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:elevation="0dp"
+        app:title="@string/app_name" >
+
+        <ImageButton
+            android:id="@+id/btnLeft"
+            style="@style/SAICoolbarImageButton"
+            app:coolbar_gravity="start"
+            app:srcCompat="@drawable/left"
+            android:visibility="gone"
+            tools:ignore="MissingPrefix"
+            android:contentDescription="TODO" />
+
+        <ImageButton
+            android:id="@+id/btnRight"
+            style="@style/SAICoolbarImageButton"
+            app:srcCompat="@drawable/ic_date_range_white_24dp"
+            android:visibility="gone"
+            android:contentDescription="TODO" />
+
+    </com.databaseproj.caltracker.view.Coolbar>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="32dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:paddingTop="50dp">
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:hintTextColor="@color/accent"
+
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/profilefragment_activity_hello_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:digits="0123456789"
+                    android:hint="@string/helloactivity_age"
+                    android:background="@color/ucla_blue"
+
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textSize="16dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <CheckBox
+                android:id="@+id/profilefragment_woman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:text="Woman" />
+
+            <CheckBox
+                android:id="@+id/profilefragment_man"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:text="Man" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <CheckBox
+                android:id="@+id/profilefragment_imperial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:text="Imperial" />
+
+            <CheckBox
+                android:id="@+id/profilefragment_metric"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:text="Metric" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:hintTextColor="@color/accent"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/profilefragment_activity_hello_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:digits="0123456789"
+                    android:hint="@string/helloactivity_height"
+                    android:background="@color/ucla_blue"
+
+                    android:inputType="numberDecimal|number"
+                    android:singleLine="true"
+                    android:textSize="16dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:hintTextColor="@color/accent"
+
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/profilefragment_activity_hello_weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:digits="0123456789"
+                    android:hint="@string/helloactivity_weight"
+                    android:inputType="numberDecimal|number"
+                    android:singleLine="true"
+                    android:background="@color/ucla_blue"
+
+                    android:textSize="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <com.databaseproj.caltracker.controller.LabelledSpinner
+            android:id="@+id/profilefragment_exercise_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/white"
+
+            custom:labelText="@string/helloactivity_spinner_exercise"
+            />
+
+        <CheckBox
+            android:id="@+id/activity_hello_check_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textColor="@color/white"
+
+            android:checked="true"
+            android:text="@string/helloactivity_share_data" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/profilefragment_activity_hello_button_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="24dp"
+            android:background="?android:attr/selectableItemBackground"
+
+            android:padding="8dp"
+            android:text="Save"
+            android:textColor="@color/accent"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/advancedplanBtn"
+            style="@style/SAIMaterialButton"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Advanced Plan" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

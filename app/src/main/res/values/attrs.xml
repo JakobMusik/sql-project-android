@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Coolbar_Layout">
+        <attr name="coolbar_gravity" format="enum">
+            <enum name="end" value="0" />
+            <enum name="start" value="1" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="Coolbar">
+        <attr name="title" format="string" />
+        <attr name="titleColor" format="color" />
+    </declare-styleable>
+
+    <attr name="colorPrimaryLight" format="color" />
+
+    <attr name="simpleThemePrimaryColor" format="color" />
+    <attr name="coolbar" format="color" />
+    <attr name="simpleThemePrimaryLightColor" format="color" />
+    <attr name="simpleThemeAccentColor" format="color" />
+    <attr name="simpleThemeTextPrimaryColor" format="color" />
+    <attr name="simpleThemeTextSecondaryColor" format="color" />
+
+    <attr name="popupMenuBackgroundTint" format="color" />
+</resources>

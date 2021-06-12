@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+
+    <color name="accent">#FF726E</color>
+
+    <color name="white">#ffffff</color>
+    <color name="btn_logut_bg">#ff6861</color>
+
+    <color name="ucla_blue">#536895</color>
+    <color name="ucla_gold">#FFB300</color>
+
+
+</resources>

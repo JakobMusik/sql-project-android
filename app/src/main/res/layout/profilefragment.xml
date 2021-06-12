@@ -196,8 +196,8 @@
             android:layout_marginTop="16dp"
             android:textColor="@color/white"
 
-            custom:labelText="@string/helloactivity_spinner_exercise"
-            />
+            app:widgetColor="#FFFFFF"
+            custom:labelText="@string/helloactivity_spinner_exercise" />
 
         <CheckBox
             android:id="@+id/activity_hello_check_share"

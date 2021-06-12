@@ -1,4 +1,5 @@
 <resources>
+
     <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
 
         <item name="colorPrimary">@color/ucla_blue</item>
@@ -7,8 +8,6 @@
 
         <item name="titleTextColor">@color/accent</item>
         <item name="android:textColorHint">@color/white</item>
-
-        <item name="android:fontFamily">@font/nanumpenscriptregular</item>
 
     </style>
 
@@ -41,7 +40,6 @@
         <item name="iconSize">22dp</item>
         <item name="iconGravity">textStart</item>
     </style>
-
 
 
     <style name="SAICoolbarImageButton" parent="Widget.AppCompat.ImageButton">

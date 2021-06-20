@@ -84,3 +84,4 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 import-summary.txt
+.idea/deploymentTargetDropDown.xml

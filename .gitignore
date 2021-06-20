@@ -85,3 +85,4 @@ lint/tmp/
 # lint/reports/
 import-summary.txt
 .idea/deploymentTargetDropDown.xml
+.idea/misc.xml

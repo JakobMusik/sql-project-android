@@ -8,7 +8,7 @@
         <item name="titleTextColor">@color/accent</item>
         <item name="android:textColorHint">@color/white</item>
 
-        <item name="android:fontFamily">@font/nanumpenscriptregular</item>
+        <item name="android:fontFamily">@font/jetbrains_mono</item>
 
     </style>
 

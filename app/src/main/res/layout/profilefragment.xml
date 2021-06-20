@@ -225,7 +225,7 @@
         <Button
             android:id="@+id/advancedplanBtn"
             style="@style/SAIMaterialButton"
-            android:layout_width="160dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Advanced Plan" />
     </LinearLayout>

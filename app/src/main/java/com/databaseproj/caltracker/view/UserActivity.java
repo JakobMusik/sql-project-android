@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.databaseproj.caltracker.helper.PutStringPreference;
+import com.databaseproj.caltracker.helper.SQLRequest;
 import com.google.android.material.textfield.TextInputLayout;
 import com.databaseproj.caltracker.R;
 import com.databaseproj.caltracker.controller.LabelledSpinner;
@@ -51,7 +53,7 @@ public class UserActivity extends AppCompatActivity {
     };
 
     private Button startButton;
-    private EditText ageET, weightET, heightET;
+    private EditText nameET, emailET, ageET, weightET, heightET;
     private SettingsManager settingsManager;
     private TextView termsTextView;
 
@@ -80,6 +82,10 @@ public class UserActivity extends AppCompatActivity {
 
         termsTextView = (TextView) findViewById(R.id.helloactivity_textview_terms);
 
+        nameET = (EditText) findViewById(R.id.helloactivity_name);
+
+        emailET = (EditText) findViewById(R.id.helloactivity_email);
+
         ageET = (EditText) findViewById(R.id.activity_hello_age);
 
         weightET = (EditText) findViewById(R.id.activity_hello_weight);
@@ -95,16 +101,21 @@ public class UserActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("useractivity", MODE_PRIVATE);
         if (prefs.getBoolean("filldata", false)) {
 
-      //      prefs.edit().putBoolean("firstrun", false).apply();
+            //      prefs.edit().putBoolean("firstrun", false).apply();
 
             DecimalFormat df = new DecimalFormat("##");
             int height = (settingsManager.getHeight());
             int weight = (settingsManager.getWeight());
             String age = df.format(settingsManager.getAge());
+            String name = settingsManager.getName();
+            String email = settingsManager.getEmail();
 
             heightET.setText(String.valueOf(height));
             weightET.setText(String.valueOf(weight));
-            ageET.setText((age));
+            ageET.setText(age);
+            nameET.setText(name);
+            emailET.setText(email);
+            exercise_spinner.setSelection(settingsManager.getExercise());
 
         } else {
 
@@ -113,6 +124,9 @@ public class UserActivity extends AppCompatActivity {
             heightET.setText("");
             weightET.setText("");
             ageET.setText("");
+            nameET.setText("");
+            emailET.setText("");
+            exercise_spinner.setSelection(0);
 
             try {
                 //	backupDatabase();
@@ -134,24 +148,12 @@ public class UserActivity extends AppCompatActivity {
                 //is chkIos checked?
                 if (((CheckBox) v).isChecked()) {
 
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(UserActivity.this);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(SettingsManager.PREFERENCES_UNITS_TYPE_KEY, US_UNITS);
-                    editor.apply();
                     metric.setChecked(false);
 
                     TextInputLayout til = (TextInputLayout) findViewById(R.id.til);
                     TextInputLayout til2 = (TextInputLayout) findViewById(R.id.til2);
                     til.setHint("Height in inches");
                     til2.setHint("Weight in lbs");
-                    DecimalFormat df = new DecimalFormat("##");
-                    int height = (settingsManager.getHeight());
-                    int weight = (settingsManager.getWeight());
-                    String age = df.format(settingsManager.getAge());
-
-                    heightET.setText(String.valueOf(height));
-                    weightET.setText(String.valueOf(weight));
-                    ageET.setText((age));
 
                     CheckStatus_1 = true;
                 }
@@ -171,24 +173,12 @@ public class UserActivity extends AppCompatActivity {
                 //is chkIos checked?
                 if (((CheckBox) v).isChecked()) {
 
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(UserActivity.this);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(SettingsManager.PREFERENCES_UNITS_TYPE_KEY, EU_UNITS);
-                    editor.apply();
                     imperial.setChecked(false);
 
                     TextInputLayout til = (TextInputLayout) findViewById(R.id.til);
                     TextInputLayout til2 = (TextInputLayout) findViewById(R.id.til2);
                     til.setHint("Height in cm");
                     til2.setHint("Weight in kg");
-                    DecimalFormat df = new DecimalFormat("##");
-                    int height = (settingsManager.getHeight());
-                    int weight = (settingsManager.getWeight());
-                    String age = df.format(settingsManager.getAge());
-
-                    heightET.setText(String.valueOf(height));
-                    weightET.setText(String.valueOf(weight));
-                    ageET.setText((age));
 
                     CheckStatus_1 = true;
                 }
@@ -207,10 +197,6 @@ public class UserActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //is chkIos checked?
                 if (((CheckBox) v).isChecked()) {
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(UserActivity.this);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(SettingsManager.PREFERENCES_USER_SEX_KEY, MALE);
-                    editor.apply();
                     //    settingsManager.setUnits(table[choosenPosition], UserActivity.this);
                     woman.setChecked(false);
 
@@ -231,10 +217,6 @@ public class UserActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //is chkIos checked?
                 if (((CheckBox) v).isChecked()) {
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(UserActivity.this);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(SettingsManager.PREFERENCES_USER_SEX_KEY, FEMALE);
-                    editor.apply();
 
                     man.setChecked(false);
 
@@ -256,8 +238,8 @@ public class UserActivity extends AppCompatActivity {
         termsTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent intent = new Intent(UserActivity.this, LicenseActivity.class);
-            startActivity(intent);
+                Intent intent = new Intent(UserActivity.this, LicenseActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -275,13 +257,18 @@ public class UserActivity extends AppCompatActivity {
 
     public void onStartClicked() {
 
-        if (ageET.getText() == null || heightET.getText() == null || weightET.getText() == null
+        if (nameET.getText() == null || emailET.getText() == null || ageET.getText() == null
+                || heightET.getText() == null || weightET.getText() == null
                 || exercise_spinner.getSpinner().getSelectedItemPosition() == 0
                 || !CheckStatus_1 || !CheckStatus_2) {
             Toast.makeText(UserActivity.this, "Don't leave blank plz.", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        PutStringPreference.put(SettingsManager.PREFERENCES_USER_SEX_KEY, man.isChecked() ? MALE : FEMALE, this);
+        PutStringPreference.put(SettingsManager.PREFERENCES_UNITS_TYPE_KEY, imperial.isChecked() ? US_UNITS : EU_UNITS, this);
+        settingsManager.setName(nameET.getText().toString(), this);
+        settingsManager.setEmail(emailET.getText().toString(), this);
         settingsManager.setAge(Integer.parseInt(ageET.getText().toString()), this);
         settingsManager.setHeight(Integer.parseInt(heightET.getText().toString()), this);
         settingsManager.setWeight(Integer.parseInt(weightET.getText().toString()), this);
@@ -289,6 +276,15 @@ public class UserActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, EditPlanActivity.class);
         startActivity(intent);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //TODO
+                String str = null;
+                //SQLRequest.post(str, UserActivity.this.getApplicationContext());
+            }
+        }).start();
 
         finish();
 
@@ -333,6 +329,10 @@ public class UserActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), "you cannot go back. finish it", Toast.LENGTH_LONG).show();
+    }
 
     @Override
     protected void onDestroy() {

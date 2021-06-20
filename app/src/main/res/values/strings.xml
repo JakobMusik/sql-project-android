@@ -23,9 +23,12 @@
 	</string>
 
 
+    <string name="profile_headline">Profile</string>
     <string name="helloactivity_headline">Hello.</string>
     <string name="helloactivity_terms">Terms of Use</string>
     <string name="helloactivity_subhead">Just a few things to get you started~.</string>
+    <string name="helloactivity_name">Name</string>
+    <string name="helloactivity_email">Email</string>
     <string name="helloactivity_age">Age</string>
     <string name="helloactivity_weight">Weight</string>
 
@@ -33,6 +36,7 @@
     <string name="helloactivity_share_data">Share anonymous data for research.</string>
     <string name="helloactivity_hint_settings">You can change these in settings later.</string>
     <string name="helloactivity_button_start">GET STARTED</string>
+    <string name="profile_button_start">CONFIRM</string>
     <string name="helloactivity_textview_tos">By using this app, you are agreeing to the</string>
 
 

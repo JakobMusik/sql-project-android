@@ -231,6 +231,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         productsListView.setNestedScrollingEnabled(true);
 
 
+        //TODO
         prepareProductsList(productsListView, productsList, tempDate);
         setHeader();
 

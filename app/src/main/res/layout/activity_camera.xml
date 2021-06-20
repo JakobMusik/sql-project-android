@@ -14,7 +14,7 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
 
-        android:src="@drawable/ic_add_white_24dp"
+        android:src="@drawable/outline_add_a_photo_24"
         app:backgroundTint="#00a78e"
         app:borderWidth="0dp"
         app:elevation="8dp"

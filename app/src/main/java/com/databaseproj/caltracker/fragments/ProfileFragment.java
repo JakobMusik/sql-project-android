@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,10 @@ import android.widget.Toast;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.databaseproj.caltracker.view.AdvancedPlanActivity;
+import com.databaseproj.caltracker.helper.PutStringPreference;
+import com.databaseproj.caltracker.helper.SQLRequest;
 import com.databaseproj.caltracker.view.EditPlanActivity;
+import com.databaseproj.caltracker.view.UserActivity;
 import com.google.android.material.textfield.TextInputLayout;
 import com.databaseproj.caltracker.R;
 import com.databaseproj.caltracker.controller.LabelledSpinner;
@@ -27,6 +28,7 @@ import com.databaseproj.caltracker.controller.ProductsDatabaseManager;
 import com.databaseproj.caltracker.controller.SettingsManager;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -51,11 +53,9 @@ public class ProfileFragment extends Fragment {
     };
 
     private Button startButton;
-    private EditText ageET, weightET, heightET;
+    private EditText nameET, emailET, ageET, weightET, heightET;
     private SettingsManager settingsManager;
     private TextView termsTextView;
-    private Button advancedPlanButton;
-
     private CheckBox imperial, metric, man, woman;
     private boolean CheckStatus_1 = true;
     private boolean CheckStatus_2 = true;
@@ -109,17 +109,19 @@ public class ProfileFragment extends Fragment {
 
         settingsManager = SettingsManager.getInstance(getActivity());
 
-        exercise_spinner = (LabelledSpinner) view.findViewById(R.id.profilefragment_exercise_spinner);
+        exercise_spinner = (LabelledSpinner) view.findViewById(R.id.exercise_spinner);
 
-        startButton = (Button) view.findViewById(R.id.profilefragment_activity_hello_button_start);
+        startButton = (Button) view.findViewById(R.id.activity_hello_button_start);
 
-        advancedPlanButton = (Button) view.findViewById(R.id.advancedplanBtn);
+        nameET = (EditText) view.findViewById(R.id.helloactivity_name);
 
-        ageET = (EditText) view.findViewById(R.id.profilefragment_activity_hello_age);
+        emailET = (EditText) view.findViewById(R.id.helloactivity_email);
 
-        weightET = (EditText) view.findViewById(R.id.profilefragment_activity_hello_weight);
+        ageET = (EditText) view.findViewById(R.id.activity_hello_age);
 
-        heightET = (EditText) view.findViewById(R.id.profilefragment_activity_hello_height);
+        weightET = (EditText) view.findViewById(R.id.activity_hello_weight);
+
+        heightET = (EditText) view.findViewById(R.id.activity_hello_height);
 
         exercise_spinner.setItemsArray(R.array.helloactivity_daily_exercise);
 
@@ -130,7 +132,7 @@ public class ProfileFragment extends Fragment {
 
 
 
-        imperial = (CheckBox) view.findViewById(R.id.profilefragment_imperial);
+        imperial = (CheckBox) view.findViewById(R.id.imperial);
         imperial.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -138,24 +140,14 @@ public class ProfileFragment extends Fragment {
                 //is chkIos checked?
                 if (((CheckBox) v).isChecked()) {
 
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(SettingsManager.PREFERENCES_UNITS_TYPE_KEY, US_UNITS);
-                    editor.apply();
                     metric.setChecked(false);
 
                     TextInputLayout til = (TextInputLayout) view.findViewById(R.id.til);
                     TextInputLayout til2 = (TextInputLayout) view.findViewById(R.id.til2);
                     til.setHint("Height in inches");
                     til2.setHint("Weight in lbs");
-                    DecimalFormat df = new DecimalFormat("##");
-                    int height = (settingsManager.getHeight());
-                    int weight = (settingsManager.getWeight());
-                    String age = df.format(settingsManager.getAge());
 
-                    heightET.setText(String.valueOf(height));
-                    weightET.setText(String.valueOf(weight));
-                    ageET.setText((age));
+
 
                     CheckStatus_1 = true;
                 }
@@ -167,7 +159,7 @@ public class ProfileFragment extends Fragment {
         });
 
 
-        metric = (CheckBox) view.findViewById(R.id.profilefragment_metric);
+        metric = (CheckBox) view.findViewById(R.id.metric);
         metric.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -175,23 +167,12 @@ public class ProfileFragment extends Fragment {
                 //is chkIos checked?
                 if (((CheckBox) v).isChecked()) {
 
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(SettingsManager.PREFERENCES_UNITS_TYPE_KEY, EU_UNITS);
-                    editor.apply();
 
                     TextInputLayout til = (TextInputLayout) view.findViewById(R.id.til);
                     TextInputLayout til2 = (TextInputLayout) view.findViewById(R.id.til2);
                     til.setHint("Height in cm");
                     til2.setHint("Weight in kg");
-                    DecimalFormat df = new DecimalFormat("##");
-                    int height = (settingsManager.getHeight());
-                    int weight = (settingsManager.getWeight());
-                    String age = df.format(settingsManager.getAge());
 
-                    heightET.setText(String.valueOf(height));
-                    weightET.setText(String.valueOf(weight));
-                    ageET.setText((age));
                     imperial.setChecked(false);
 
                     CheckStatus_1 = true;
@@ -204,7 +185,7 @@ public class ProfileFragment extends Fragment {
         });
 
 
-        man = (CheckBox) view.findViewById(R.id.profilefragment_man);
+        man = (CheckBox) view.findViewById(R.id.man);
         man.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -213,10 +194,7 @@ public class ProfileFragment extends Fragment {
                 if (((CheckBox) v).isChecked()) {
 
                     //    settingsManager.setUnits(table[choosenPosition], UserActivity.this);
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(SettingsManager.PREFERENCES_USER_SEX_KEY, MALE);
-                    editor.apply();
+
                     woman.setChecked(false);
 
                     CheckStatus_2 = true;
@@ -229,7 +207,7 @@ public class ProfileFragment extends Fragment {
         });
 
 
-        woman = (CheckBox) view.findViewById(R.id.profilefragment_woman);
+        woman = (CheckBox) view.findViewById(R.id.woman);
         woman.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -237,10 +215,6 @@ public class ProfileFragment extends Fragment {
                 //is chkIos checked?
                 if (((CheckBox) v).isChecked()) {
 
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(SettingsManager.PREFERENCES_USER_SEX_KEY, FEMALE);
-                    editor.apply();
                     man.setChecked(false);
 
                     CheckStatus_2 = true;
@@ -270,21 +244,12 @@ public class ProfileFragment extends Fragment {
         informationFillIn();
 
 
-        advancedPlanButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AdvancedPlanActivity.class);
-                startActivityForResult(intent, 1);
-            }
-        });
-
-
-
         return view;
     }
 
     private void informationFillIn()
     {
+
         SharedPreferences prefs = getActivity().getSharedPreferences("useractivity", MODE_PRIVATE);
         if (prefs.getBoolean("filldata", false)) {
 
@@ -294,10 +259,14 @@ public class ProfileFragment extends Fragment {
             int height = (settingsManager.getHeight());
             int weight = (settingsManager.getWeight());
             String age = df.format(settingsManager.getAge());
+            String name = settingsManager.getName();
+            String email = settingsManager.getEmail();
 
             heightET.setText(String.valueOf(height));
             weightET.setText(String.valueOf(weight));
-            ageET.setText((age));
+            ageET.setText(age);
+            nameET.setText(name);
+            emailET.setText(email);
             exercise_spinner.setSelection(settingsManager.getExercise());
 
         } else {
@@ -307,6 +276,8 @@ public class ProfileFragment extends Fragment {
             heightET.setText("");
             weightET.setText("");
             ageET.setText("");
+            nameET.setText("");
+            emailET.setText("");
             exercise_spinner.setSelection(0);
             //	backupDatabase();
             //  copyDataBase();
@@ -359,12 +330,18 @@ public class ProfileFragment extends Fragment {
 
     public void onStartClicked() {
 
-        if (ageET.getText() == null || heightET.getText() == null || weightET.getText() == null
+        if (nameET.getText() == null || emailET.getText() == null || ageET.getText() == null
+                || heightET.getText() == null || weightET.getText() == null
                 || exercise_spinner.getSpinner().getSelectedItemPosition() == 0
                 || !CheckStatus_1 || !CheckStatus_2) {
             Toast.makeText(getContext(), "Don't leave blank plz.", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        PutStringPreference.put(SettingsManager.PREFERENCES_USER_SEX_KEY, man.isChecked() ? MALE : FEMALE, getActivity());
+        PutStringPreference.put(SettingsManager.PREFERENCES_UNITS_TYPE_KEY, imperial.isChecked() ? US_UNITS : EU_UNITS, getActivity());
+        settingsManager.setName(nameET.getText().toString(), getActivity());
+        settingsManager.setEmail(emailET.getText().toString(), getActivity());
         settingsManager.setAge(Integer.parseInt(ageET.getText().toString()), getActivity());
         settingsManager.setHeight(Integer.parseInt(heightET.getText().toString()), getActivity());
         settingsManager.setWeight(Integer.parseInt(weightET.getText().toString()), getActivity());
@@ -373,6 +350,14 @@ public class ProfileFragment extends Fragment {
         Intent intent = new Intent(getActivity(), EditPlanActivity.class);
         startActivity(intent);
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //TODO
+                String str = null;
+                //SQLRequest.post(str, requireContext().getApplicationContext());
+            }
+        }).start();
 
     }
 
@@ -385,5 +370,6 @@ public class ProfileFragment extends Fragment {
             informationFillIn();
         }
     }
+
 
 }

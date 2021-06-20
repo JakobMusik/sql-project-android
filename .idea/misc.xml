@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Data/Github Desktop Documents/sql-project-android/app/src/main/res/layout/activity_camera.xml" value="0.23055555555555557" />
+        <entry key="..\:/Data/Github Desktop Documents/sql-project-android/app/src/main/res/layout/activity_feature1.xml" value="0.23055555555555557" />
         <entry key="..\:/Data/Github Desktop Documents/sql-project-android/app/src/main/res/layout/activity_feature2.xml" value="0.23055555555555557" />
+        <entry key="..\:/Data/Github Desktop Documents/sql-project-android/app/src/main/res/layout/activity_user.xml" value="0.132" />
+        <entry key="..\:/Data/Github Desktop Documents/sql-project-android/app/src/main/res/layout/profilefragment.xml" value="0.1" />
       </map>
     </option>
   </component>

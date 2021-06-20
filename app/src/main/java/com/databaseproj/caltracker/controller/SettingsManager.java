@@ -13,6 +13,8 @@ public class SettingsManager {
     public static final String PREFERENCES_PROTEIN_REQUIREMENT = "protein_requirement";
     public static final String PREFERENCES_CARBOHYDRATES_REQUIREMENT = "carbohydrates_requirement";
     public static final String PREFERENCES_FAT_REQUIREMENT = "fat_requirement";
+    public static final String PREFERENCES_USER_NAME_KEY = "user_name_key";
+    public static final String PREFERENCES_USER_EMAIL_KEY = "user_name_email";
     public static final String PREFERENCES_USER_AGE_KEY = "user_age_key";
     public static final String PREFERENCES_USER_EU_WEIGHT_KEY = "user_eu_weight_key";
     public static final String PREFERENCES_USER_US_WEIGHT_KEY = "user_us_weight_key";
@@ -149,6 +151,16 @@ public class SettingsManager {
         }
     }
 
+    public String getName() {
+        String name = sharedPreferences.getString(SettingsManager.PREFERENCES_USER_NAME_KEY, "your name");
+        return name;
+    }
+
+    public String getEmail() {
+        String email = sharedPreferences.getString(SettingsManager.PREFERENCES_USER_EMAIL_KEY, "your email");
+        return email;
+    }
+
     public int getAge() {
         int age = sharedPreferences.getInt(SettingsManager.PREFERENCES_USER_AGE_KEY, 20);
         return age;
@@ -238,6 +250,20 @@ public class SettingsManager {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         Editor editor = sharedPreferences.edit();
         editor.putString(SettingsManager.PREFERENCES_GPS_REFRESH_RATE_KEY, gpsRefreshRate);
+        editor.apply();
+    }
+
+    public void setName(String name, Context context) {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        Editor editor = sharedPreferences.edit();
+        editor.putString(SettingsManager.PREFERENCES_USER_NAME_KEY, name);
+        editor.apply();
+    }
+
+    public void setEmail(String email, Context context) {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        Editor editor = sharedPreferences.edit();
+        editor.putString(SettingsManager.PREFERENCES_USER_EMAIL_KEY, email);
         editor.apply();
     }
 

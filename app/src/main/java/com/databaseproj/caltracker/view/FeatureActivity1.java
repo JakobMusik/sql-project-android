@@ -2,6 +2,7 @@ package com.databaseproj.caltracker.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,6 +20,9 @@ import com.databaseproj.caltracker.R;
 import com.databaseproj.caltracker.helper.ExifUtil;
 import com.databaseproj.caltracker.helper.WriteLog;
 import com.github.clans.fab.FloatingActionButton;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -101,7 +105,7 @@ public class FeatureActivity1 extends AppCompatActivity {
                     };
                     RequestQueueSingleton.getInstance(getContext()).addToRequestQueue(stringRequest);*/
 
-                    Toast.makeText(FeatureActivity1.this, "Sending Picture, Please wait...", Toast.LENGTH_LONG).show();
+                    Toast.makeText(FeatureActivity1.this, "It might take a minute, please wait...", Toast.LENGTH_LONG).show();
 
                     new Thread(new Runnable() {
                         public void run() {
@@ -132,8 +136,9 @@ public class FeatureActivity1 extends AppCompatActivity {
                             try {
                                 Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);
                                 Response response = client.newCall(request).execute();
-                                resultText.setText(response.body().string());
-                                WriteLog.writeToFile(response.toString(), FeatureActivity1.this);
+                                showResult(response, FeatureActivity1.this);
+
+                                //WriteLog.writeToFile(response.toString(), FeatureActivity1.this);
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -186,6 +191,27 @@ public class FeatureActivity1 extends AppCompatActivity {
         if (requestCode == 2) {
             Toast.makeText(FeatureActivity1.this, "(reserved feature)", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void showResult(Response response, Context context) throws IOException {
+        Gson gson = new Gson();
+        //Toast.makeText(context, response.body().toString(), Toast.LENGTH_LONG).show();
+        String str = response.body().string();
+        JsonObject jsonObject = new JsonObject();
+        jsonObject = gson.fromJson(str, JsonObject.class);
+        String result = jsonObject.get("category").toString().replaceAll("^\"+|\"+$", "");
+        resultText.setText(result);
+
+        //Test out..
+        //Toast.makeText(context, jsonObject.get("category").toString(), Toast.LENGTH_LONG).show();
+
+        /*for (int i = 0; i < jsonArray.size(); i++) {
+            Map map = gson.fromJson(jsonArray.get(i).toString(), Map.class);
+            if (map.get("id").equals(5.0)) {
+                Toast.makeText(context, map.get("name").toString(), Toast.LENGTH_LONG).show();
+            }
+
+        }*/
     }
 
 

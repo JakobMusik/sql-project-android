@@ -36,14 +36,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/diaphragm" />
+        app:srcCompat="@drawable/outline_add_a_photo_24" />
 
     <TextView
         android:id="@+id/resultText"
         android:layout_width="351dp"
         android:layout_height="95dp"
         android:layout_marginBottom="48dp"
-        android:text="test result will be shown here"
+        android:gravity="center"
+        android:text="Search result will be shown here"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/cameraBtn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Send it"
+        android:text="Search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cameraBtn"
         app:layout_constraintHorizontal_bias="0.603"

@@ -265,4 +265,10 @@ public class EditPlanActivity extends AppCompatActivity {
         fatEditText.setText(new String(df.format(fats * factor)).replace(",", ".") + " lb");
     }
 
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), "you cannot go back. finish it", Toast.LENGTH_LONG).show();
+    }
+
 }

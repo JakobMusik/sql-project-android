@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="32dp"
+        android:paddingBottom="60dp"
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
         android:paddingTop="32dp">
@@ -38,6 +38,63 @@
             android:text="@string/helloactivity_subhead"
             android:textColor="@color/white"
             android:textSize="@dimen/abc_text_size_subhead_material" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:hintTextColor="@color/accent"
+
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/helloactivity_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/helloactivity_name"
+                    android:background="@color/ucla_blue"
+                    android:inputType="textPersonName"
+                    android:singleLine="true"
+                    android:textSize="16dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:hintTextColor="@color/accent"
+
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/helloactivity_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/helloactivity_email"
+                    android:background="@color/ucla_blue"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:textSize="16dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"

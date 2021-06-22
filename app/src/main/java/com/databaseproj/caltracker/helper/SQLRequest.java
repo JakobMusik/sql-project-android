@@ -40,7 +40,7 @@ public class SQLRequest {
                 MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
                 RequestBody body = RequestBody.create("str=" + request, mediaType);
                 Request request = new Request.Builder()
-                        .url("https://iiww.cc/api/users/custom")
+                        .url("https://iiww.cc/api/custom")
                         .method("POST", body)
                         .addHeader("key", "2899e614b19fac45600196785383d9d9")
                         .addHeader("Content-Type", "application/x-www-form-urlencoded")

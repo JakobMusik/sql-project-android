@@ -35,8 +35,8 @@ public class FeatureActivity2 extends AppCompatActivity {
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String str = "select * from users" + "\n" +
-                             "where ID = 1;";
+                String str = "select * from user_pref" + "\n" +
+                             "where id = 1;";
                 SQLRequest.post(str, FeatureActivity2.this.getApplicationContext());
 
                 new Thread(new Runnable() {
@@ -62,8 +62,7 @@ public class FeatureActivity2 extends AppCompatActivity {
         Gson gson = new Gson();
         //Toast.makeText(context, response.body().toString(), Toast.LENGTH_LONG).show();
         String str = response.body().string();
-        JsonArray jsonArray = new JsonArray();
-        jsonArray = gson.fromJson(str, JsonArray.class);
+        JsonArray jsonArray = gson.fromJson(str, JsonArray.class);
 
         //Test out..
         //Toast.makeText(context, jsonArray.get(0).toString(), Toast.LENGTH_LONG).show();

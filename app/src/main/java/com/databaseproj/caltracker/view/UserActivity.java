@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -21,8 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.databaseproj.caltracker.helper.PutStringPreference;
-import com.databaseproj.caltracker.helper.SQLRequest;
+import com.databaseproj.caltracker.helper.UpdateRemoteDB;
 import com.google.android.material.textfield.TextInputLayout;
 import com.databaseproj.caltracker.R;
 import com.databaseproj.caltracker.controller.LabelledSpinner;
@@ -265,8 +263,8 @@ public class UserActivity extends AppCompatActivity {
             return;
         }
 
-        PutStringPreference.put(SettingsManager.PREFERENCES_USER_SEX_KEY, man.isChecked() ? MALE : FEMALE, this);
-        PutStringPreference.put(SettingsManager.PREFERENCES_UNITS_TYPE_KEY, imperial.isChecked() ? US_UNITS : EU_UNITS, this);
+        settingsManager.setSex(man.isChecked() ? MALE : FEMALE, this);
+        settingsManager.setUnits(imperial.isChecked() ? US_UNITS : EU_UNITS, this);
         settingsManager.setName(nameET.getText().toString(), this);
         settingsManager.setEmail(emailET.getText().toString(), this);
         settingsManager.setAge(Integer.parseInt(ageET.getText().toString()), this);
@@ -274,17 +272,15 @@ public class UserActivity extends AppCompatActivity {
         settingsManager.setWeight(Integer.parseInt(weightET.getText().toString()), this);
         settingsManager.setExercise(exercise_spinner.getSpinner().getSelectedItemPosition(), this);
 
+
+
+        UpdateRemoteDB.update(UserActivity.this);
+        Toast.makeText(UserActivity.this, "Saving to server database...", Toast.LENGTH_LONG).show();
+
+
         Intent intent = new Intent(this, EditPlanActivity.class);
         startActivity(intent);
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //TODO
-                String str = null;
-                //SQLRequest.post(str, UserActivity.this.getApplicationContext());
-            }
-        }).start();
 
         finish();
 

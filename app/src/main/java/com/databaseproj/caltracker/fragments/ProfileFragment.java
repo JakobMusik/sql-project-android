@@ -17,10 +17,9 @@ import android.widget.Toast;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.databaseproj.caltracker.helper.PutStringPreference;
-import com.databaseproj.caltracker.helper.SQLRequest;
+import com.databaseproj.caltracker.helper.UpdateRemoteDB;
 import com.databaseproj.caltracker.view.EditPlanActivity;
-import com.databaseproj.caltracker.view.UserActivity;
+import com.databaseproj.caltracker.view.LicenseActivity;
 import com.google.android.material.textfield.TextInputLayout;
 import com.databaseproj.caltracker.R;
 import com.databaseproj.caltracker.controller.LabelledSpinner;
@@ -28,7 +27,6 @@ import com.databaseproj.caltracker.controller.ProductsDatabaseManager;
 import com.databaseproj.caltracker.controller.SettingsManager;
 
 import java.text.DecimalFormat;
-import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -112,6 +110,8 @@ public class ProfileFragment extends Fragment {
         exercise_spinner = (LabelledSpinner) view.findViewById(R.id.exercise_spinner);
 
         startButton = (Button) view.findViewById(R.id.activity_hello_button_start);
+
+        termsTextView = (TextView) view.findViewById(R.id.helloactivity_textview_terms);
 
         nameET = (EditText) view.findViewById(R.id.helloactivity_name);
 
@@ -231,6 +231,13 @@ public class ProfileFragment extends Fragment {
         pinkArrow.setBounds(0, 0, 60, 60);
         startButton.setCompoundDrawables(null, null, pinkArrow, null);
 
+        termsTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), LicenseActivity.class);
+                startActivity(intent);
+            }
+        });
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -338,8 +345,8 @@ public class ProfileFragment extends Fragment {
             return;
         }
 
-        PutStringPreference.put(SettingsManager.PREFERENCES_USER_SEX_KEY, man.isChecked() ? MALE : FEMALE, getActivity());
-        PutStringPreference.put(SettingsManager.PREFERENCES_UNITS_TYPE_KEY, imperial.isChecked() ? US_UNITS : EU_UNITS, getActivity());
+        settingsManager.setSex(man.isChecked() ? MALE : FEMALE, getActivity());
+        settingsManager.setUnits(imperial.isChecked() ? US_UNITS : EU_UNITS, getActivity());
         settingsManager.setName(nameET.getText().toString(), getActivity());
         settingsManager.setEmail(emailET.getText().toString(), getActivity());
         settingsManager.setAge(Integer.parseInt(ageET.getText().toString()), getActivity());
@@ -347,18 +354,12 @@ public class ProfileFragment extends Fragment {
         settingsManager.setWeight(Integer.parseInt(weightET.getText().toString()), getActivity());
         settingsManager.setExercise(exercise_spinner.getSpinner().getSelectedItemPosition(), getActivity());
 
+
+        UpdateRemoteDB.update(getContext());
+        Toast.makeText(getContext(), "Saving to server database...", Toast.LENGTH_LONG).show();
+
         Intent intent = new Intent(getActivity(), EditPlanActivity.class);
         startActivity(intent);
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //TODO
-                String str = null;
-                //SQLRequest.post(str, requireContext().getApplicationContext());
-            }
-        }).start();
-
     }
 
     @Override

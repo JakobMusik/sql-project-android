@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Simple plan generated, BMR calculated based on Mifflin St Jeor formula. You can modify it tho, if you know what youre doing"
-                android:textSize="19sp" />
+                android:textSize="14sp" />
 
 
         </LinearLayout>
@@ -44,17 +44,17 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:hintTextColor="@color/accent"
+                android:layout_weight="1"
 
-                android:layout_weight="1">
+                app:hintTextColor="@color/accent">
 
                 <EditText
                     android:id="@+id/caloriesValueEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/ucla_blue"
                     android:digits="0123456789"
                     android:hint="Daily Calories Goal"
-                    android:background="@color/ucla_blue"
 
                     android:inputType="numberDecimal|number"
                     android:singleLine="true" />
@@ -72,9 +72,9 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:hintTextColor="@color/accent"
+                android:layout_weight="1"
 
-                android:layout_weight="1">
+                app:hintTextColor="@color/accent">
 
                 <EditText
                     android:id="@+id/proteinValueEditText"
@@ -100,17 +100,17 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                app:hintTextColor="@color/accent"
+                android:layout_weight="1"
 
-                android:layout_weight="1">
+                app:hintTextColor="@color/accent">
 
                 <EditText
                     android:id="@+id/carbohydratesValueEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/ucla_blue"
                     android:digits="0123456789"
                     android:hint="Daily Carbs Goal"
-                    android:background="@color/ucla_blue"
 
                     android:inputType="numberDecimal|number"
                     android:singleLine="true" />
@@ -128,17 +128,17 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                app:hintTextColor="@color/accent"
+                android:layout_weight="1"
 
-                android:layout_weight="1">
+                app:hintTextColor="@color/accent">
 
                 <EditText
                     android:id="@+id/fatValueEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/ucla_blue"
                     android:digits="0123456789"
                     android:hint="Daily Fat Goal"
-                    android:background="@color/ucla_blue"
 
                     android:inputType="numberDecimal|number"
                     android:singleLine="true" />

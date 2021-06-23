@@ -12,4 +12,46 @@
     android:paddingBottom="16dp"
     tools:context=".view.FeatureActivity3">
 
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="294dp"
+        android:layout_height="67dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.677" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="95dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="68dp"
+        android:text="Search"
+        android:textColor="@color/accent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText1" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="95dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="68dp"
+        android:text="Button"
+        android:textColor="@color/accent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/editText1" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="295dp"
+        android:layout_height="288dp"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="138dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

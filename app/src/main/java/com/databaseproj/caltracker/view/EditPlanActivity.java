@@ -148,7 +148,7 @@ public class EditPlanActivity extends AppCompatActivity {
 
 
         boolean isMan = true;
-        if (settingsManager.getSex().equals(settingsManager.getSexValuesTable()[1])) {
+        if (settingsManager.getGender().equals(settingsManager.getSexValuesTable()[1])) {
             isMan = false;
         }
 
@@ -217,7 +217,7 @@ public class EditPlanActivity extends AppCompatActivity {
 
 
         boolean isMan = true;
-        if (settingsManager.getSex().equals(settingsManager.getSexValuesTable()[1])) {
+        if (settingsManager.getGender().equals(settingsManager.getSexValuesTable()[1])) {
             isMan = false;
         }
 

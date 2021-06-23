@@ -13,6 +13,7 @@ public class SettingsManager {
     public static final String PREFERENCES_PROTEIN_REQUIREMENT = "protein_requirement";
     public static final String PREFERENCES_CARBOHYDRATES_REQUIREMENT = "carbohydrates_requirement";
     public static final String PREFERENCES_FAT_REQUIREMENT = "fat_requirement";
+    public static final String PREFERENCES_USER_ID_KEY = "0";
     public static final String PREFERENCES_USER_NAME_KEY = "user_name_key";
     public static final String PREFERENCES_USER_EMAIL_KEY = "user_name_email";
     public static final String PREFERENCES_USER_AGE_KEY = "user_age_key";
@@ -151,6 +152,11 @@ public class SettingsManager {
         }
     }
 
+    public int getID() {
+        int id = sharedPreferences.getInt(SettingsManager.PREFERENCES_USER_ID_KEY, 0);
+        return id;
+    }
+
     public String getName() {
         String name = sharedPreferences.getString(SettingsManager.PREFERENCES_USER_NAME_KEY, "your name");
         return name;
@@ -190,9 +196,9 @@ public class SettingsManager {
     }
 
 
-    public String getSex() {
-        String sex = sharedPreferences.getString(SettingsManager.PREFERENCES_USER_SEX_KEY, "male");
-        return sex;
+    public String getGender() {
+        String gender = sharedPreferences.getString(SettingsManager.PREFERENCES_USER_SEX_KEY, "male");
+        return gender;
     }
 
     public Integer getExercise() {
@@ -253,6 +259,13 @@ public class SettingsManager {
         editor.apply();
     }
 
+    public void setID(int id, Context context) {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        Editor editor = sharedPreferences.edit();
+        editor.putInt(SettingsManager.PREFERENCES_USER_ID_KEY, id);
+        editor.apply();
+    }
+
     public void setName(String name, Context context) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         Editor editor = sharedPreferences.edit();
@@ -307,7 +320,7 @@ public class SettingsManager {
         }
     }
 
-    public void setSex(String sex, Context context) {
+    public void setGender(String sex, Context context) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         Editor editor = sharedPreferences.edit();
         editor.putString(SettingsManager.PREFERENCES_USER_SEX_KEY, sex);
@@ -333,7 +346,7 @@ public class SettingsManager {
 
 
     public String getUserDetails() {
-        String userDetails = getAge() + " years / " + getWeight() + " " + getWeightUnit() + " / " + getHeight() + " / " + getSex();
+        String userDetails = getAge() + " years / " + getWeight() + " " + getWeightUnit() + " / " + getHeight() + " / " + getGender();
         return userDetails;
     }
 

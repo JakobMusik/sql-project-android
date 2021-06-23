@@ -75,10 +75,10 @@
 
                 <EditText
                     android:id="@+id/helloactivity_email"
-                    android:layout_width="match_parent"
+                    android:layout_width="277dp"
                     android:layout_height="match_parent"
-                    android:hint="@string/helloactivity_email"
                     android:background="@color/ucla_blue"
+                    android:hint="@string/helloactivity_email"
                     android:inputType="textEmailAddress"
                     android:singleLine="true"
                     android:textSize="16dp" />

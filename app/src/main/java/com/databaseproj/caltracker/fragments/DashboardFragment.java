@@ -76,7 +76,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     private ArrayAdapter<RowModelSearch> arrayAdapter;
     private ArrayList<RowModelSearch> productsList;
     private SettingsManager settingsManager;
-    private float wholeProteins, wholeCarbohydrates, wholeFats, wholeCalories;
+    private float totalProtein, totalCarbohydrates, totalFat, totalCalories;
     private ArrayList<EatenProduct> eatenProducts;
     private ArrayList<ShowEatenProduct> showeatenProducts;
 
@@ -203,7 +203,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     public void onResume() {
         super.onResume();
 
-        wholeProteins = wholeCarbohydrates = wholeFats = wholeCalories = 0;
+        totalProtein = totalCarbohydrates = totalFat = totalCalories = 0;
         productsList = new ArrayList<RowModelSearch>();
 
         tempDate = Calendar.getInstance();
@@ -221,7 +221,9 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                showAlertDialog(arg2);
+                //TODO
+                //Temporarily disable delete function..
+                //showAlertDialog(arg2);
                 return true;
             }
 
@@ -236,7 +238,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         setHeader();
 
 
-        int calorieString = (int) wholeCalories;
+        int calorieString = (int) totalCalories;
         int calorieStringTo = (int) settingsManager.getCaloriesRequirement();
 
 
@@ -274,37 +276,37 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         if (settingsManager.getUnits().equals(SettingsManager.US_UNITS)) {
             postfix = "lb";
             factor = 1 / gramsPerPound;
-            wholeProteins /= gramsPerPound;
-            wholeCarbohydrates /= gramsPerPound;
-            wholeFats /= gramsPerPound;
+            totalProtein /= gramsPerPound;
+            totalCarbohydrates /= gramsPerPound;
+            totalFat /= gramsPerPound;
 
         } else {
             postfix = "g";
         }
 
-        String proteinString = df.format(wholeProteins) + "/" + df.format(settingsManager.getProteinRequirement() * factor) + postfix;// + "\n";
-        String carbohydrateString = df.format(wholeCarbohydrates) + "/" + df.format(settingsManager.getCarbohydratesRequirement() * factor) + postfix;// + "\n";
-        String fatString = df.format(wholeFats) + "/" + df.format(settingsManager.getFatRequirement() * factor) + postfix;// + "\n";
-        String calorieString = df.format(wholeCalories);
+        String proteinString = df.format(totalProtein) + "/" + df.format(settingsManager.getProteinRequirement() * factor) + postfix;// + "\n";
+        String carbohydrateString = df.format(totalCarbohydrates) + "/" + df.format(settingsManager.getCarbohydratesRequirement() * factor) + postfix;// + "\n";
+        String fatString = df.format(totalFat) + "/" + df.format(settingsManager.getFatRequirement() * factor) + postfix;// + "\n";
+        String calorieString = df.format(totalCalories);
         String remaincalorieString = "/" + df.format(settingsManager.getCaloriesRequirement());
 
-        float remainingcalories = (settingsManager.getCaloriesRequirement() - wholeCalories);
+        float remainingcalories = (settingsManager.getCaloriesRequirement() - totalCalories);
 
         String remainkcal = df.format(remainingcalories);
 
 
         ProgressBar simpleProgressBar= view.findViewById(R.id.simpleProgressBar); // initiate the progress bar
         simpleProgressBar.setMax((int) settingsManager.getProteinRequirement());
-        simpleProgressBar.setProgress((int) wholeProteins);
+        simpleProgressBar.setProgress((int) totalProtein);
 
         ProgressBar simpleProgressBar1= view.findViewById(R.id.simpleProgressBar1); // initiate the progress bar
         simpleProgressBar1.setMax((int) settingsManager.getCarbohydratesRequirement());
-        simpleProgressBar1.setProgress((int) wholeCarbohydrates);
+        simpleProgressBar1.setProgress((int) totalCarbohydrates);
 
 
         ProgressBar simpleProgressBar2= view.findViewById(R.id.simpleProgressBar2); // initiate the progress bar
         simpleProgressBar2.setMax((int) settingsManager.getFatRequirement());
-        simpleProgressBar2.setProgress((int) wholeFats);
+        simpleProgressBar2.setProgress((int) totalFat);
 
         caloriesEditText.setText(remainkcal);
 //        remainCalories.setText(remainkcal + " kcal to go");
@@ -330,7 +332,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     }
 
     private void addElements(ArrayList<RowModelSearch> list, Calendar date) {
-        wholeProteins = wholeCarbohydrates = wholeFats = wholeCalories = 0;
+        totalProtein = totalCarbohydrates = totalFat = totalCalories = 0;
         String productPointsFileName = date.get(Calendar.DAY_OF_MONTH) + "_" + (tempDate.get(Calendar.MONTH) + 1) + "_" + date.get(Calendar.YEAR);
         showeatenProducts = new ArrayList<ShowEatenProduct>();
         list.clear();
@@ -375,10 +377,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                     showeatenProducts.add(product);
 
                     list.add(new RowModelSearch(product.getName()+"", product.getCalories() + "", product.getAmount() + "", product.getAmount() + "" , product.getAmount() + ""));
-                    wholeProteins += product.getProtein();
-                    wholeCarbohydrates += product.getCarbohydrates();
-                    wholeFats += product.getFat();
-                    wholeCalories += product.getCalories();
+                    totalProtein += product.getProtein();
+                    totalCarbohydrates += product.getCarbohydrates();
+                    totalFat += product.getFat();
+                    totalCalories += product.getCalories();
 
 
 
@@ -392,7 +394,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             }
 
         } catch (FileNotFoundException e) {
-            wholeProteins = wholeCarbohydrates = wholeFats = wholeCalories = 0;
+            totalProtein = totalCarbohydrates = totalFat = totalCalories = 0;
             e.printStackTrace();
         }
     }
@@ -486,14 +488,15 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         showeatenProducts.remove(index);
         arrayAdapter.notifyDataSetChanged();
 
-        wholeProteins = wholeCarbohydrates = wholeFats = wholeCalories = 0;
+        totalProtein = totalCarbohydrates = totalFat = totalCalories = 0;
         for (int i = 0; i < showeatenProducts.size(); i++) {
             ShowEatenProduct product = showeatenProducts.get(i);
-            wholeProteins += product.getProtein();
-            wholeCarbohydrates += product.getCarbohydrates();
-            wholeFats += product.getFat();
-            wholeCalories += product.getCalories();
+            totalProtein += product.getProtein();
+            totalCarbohydrates += product.getCarbohydrates();
+            totalFat += product.getFat();
+            totalCalories += product.getCalories();
         }
+
 
         try {
             String productPointsFileName = date.get(Calendar.DAY_OF_MONTH) + "_" + (tempDate.get(Calendar.MONTH) + 1) + "_" + date.get(Calendar.YEAR);

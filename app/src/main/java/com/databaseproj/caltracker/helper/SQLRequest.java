@@ -31,7 +31,7 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 public class SQLRequest {
-    public static void post(String request, Context context) {
+    public static void post(String request, Boolean noReply, Context context) {
         new Thread(new Runnable() {
             public void run() {
                 Looper.prepare();
@@ -54,6 +54,10 @@ public class SQLRequest {
 
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+
+                if (noReply) {
+                    GlobalClass.clear();
                 }
             }
         }).start();

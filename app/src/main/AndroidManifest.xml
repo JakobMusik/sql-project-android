@@ -33,9 +33,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.AdvancedPlanActivity"
-            android:screenOrientation="fullSensor"
-            android:theme="@style/AppTheme" />
         <activity
             android:name=".view.LicenseActivity"
             android:screenOrientation="fullSensor"
@@ -50,6 +47,10 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".view.FeatureActivity3"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.FeatureActivity4"
             android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme" />
         <activity

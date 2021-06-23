@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.databaseproj.caltracker.helper.SQLRequest;
 import com.github.clans.fab.FloatingActionButton;
 import com.databaseproj.caltracker.R;
 import com.databaseproj.caltracker.controller.ProductsDatabaseManager;
@@ -111,7 +112,6 @@ public class AddProductActivity extends AppCompatActivity {
         }
         databaseManager.close();
 
-
     }
 
     private void prepareData() {
@@ -132,13 +132,14 @@ public class AddProductActivity extends AppCompatActivity {
                 postfix += " 100 ml";
             }
         }
-
-
     }
 
 
     private void addToDatabase() throws NumberFormatException {
         String name = nameEditText.getText().toString().trim();
+        if (name == null) {
+            Toast.makeText(AddProductActivity.this, "Name is empty", Toast.LENGTH_SHORT).show();
+        }
 
         float amountToCalculate = Float.parseFloat("100"); //check
        // float calories = Float.parseFloat(caloriesEditText.getText().toString()); //catch exception
@@ -159,10 +160,6 @@ public class AddProductActivity extends AppCompatActivity {
         if (carbohydratesEditText.getText().toString().equals("") == false){
             carbohydrates = Float.parseFloat(carbohydratesEditText.getText().toString());
         }
-
-
-
-
 
         //		Log.d("sum", carbohydrates + protein + fat + "");
         //		Log.d("amount", amountToCalculate * 1.01 + "");
@@ -188,10 +185,17 @@ public class AddProductActivity extends AppCompatActivity {
 
         tempProduct = new Product(name, isFood, calories, "0", fat, protein, carbohydrates);
 
+
+
         ProductsDatabaseManager databaseManager = new ProductsDatabaseManager(this);
         databaseManager.open();
-        databaseManager.insertWorkout(tempProduct);
+        long _id = databaseManager.insertWorkout(tempProduct);
         databaseManager.close();
+
+        SQLRequest.post("insert into products (_id, product_name, is_food, calories, barcode, fat, protein, carbohydrates)\n" +
+                        "values(" + _id + ", '" + name + "', 0, " + calories + ", 0, " + fat + ", " + protein + ", " + carbohydrates + ");",
+                true, AddProductActivity.this);
+
     }
 
 

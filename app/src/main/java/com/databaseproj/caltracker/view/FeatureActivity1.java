@@ -136,7 +136,7 @@ public class FeatureActivity1 extends AppCompatActivity {
                             try {
                                 Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);
                                 Response response = client.newCall(request).execute();
-                                showResult(response, FeatureActivity1.this);
+                                showResult(response);
 
                                 //WriteLog.writeToFile(response.toString(), FeatureActivity1.this);
                             } catch (IOException e) {
@@ -193,7 +193,7 @@ public class FeatureActivity1 extends AppCompatActivity {
         }
     }
 
-    private void showResult(Response response, Context context) throws IOException {
+    private void showResult(Response response) throws IOException {
         Gson gson = new Gson();
         //Toast.makeText(context, response.body().toString(), Toast.LENGTH_LONG).show();
         String str = response.body().string();

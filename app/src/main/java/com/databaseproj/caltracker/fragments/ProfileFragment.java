@@ -315,7 +315,7 @@ public class ProfileFragment extends Fragment {
         }
 
         boolean isMan = true;
-        if (settingsManager.getSex().equals(settingsManager.getSexValuesTable()[1])) {
+        if (settingsManager.getGender().equals(settingsManager.getSexValuesTable()[1])) {
             isMan = false;
         }
 
@@ -345,7 +345,7 @@ public class ProfileFragment extends Fragment {
             return;
         }
 
-        settingsManager.setSex(man.isChecked() ? MALE : FEMALE, getActivity());
+        settingsManager.setGender(man.isChecked() ? MALE : FEMALE, getActivity());
         settingsManager.setUnits(imperial.isChecked() ? US_UNITS : EU_UNITS, getActivity());
         settingsManager.setName(nameET.getText().toString(), getActivity());
         settingsManager.setEmail(emailET.getText().toString(), getActivity());
@@ -356,7 +356,7 @@ public class ProfileFragment extends Fragment {
 
 
         UpdateRemoteDB.update(getContext());
-        Toast.makeText(getContext(), "Saving to server database...", Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), "Saving to server database...", Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getActivity(), EditPlanActivity.class);
         startActivity(intent);

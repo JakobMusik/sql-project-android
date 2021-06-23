@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.databaseproj.caltracker.R;
 import com.databaseproj.caltracker.controller.ProductsDatabaseManager;
 import com.databaseproj.caltracker.controller.SettingsManager;
+import com.databaseproj.caltracker.helper.SQLRequest;
 import com.databaseproj.caltracker.model.Product;
 import com.databaseproj.caltracker.model.ShowEatenProduct;
 
@@ -234,7 +235,6 @@ public class ShowProductActivity extends AppCompatActivity {
                     for (int i = 7; i < array.length; i++) {
                         name += " " + array[i];
                     }
-
                     ShowEatenProduct product = new ShowEatenProduct(amount, protein, carbohydrates, fats, calories, time,  name);
                     showeatenProducts.add(product);
                 }
@@ -266,6 +266,10 @@ public class ShowProductActivity extends AppCompatActivity {
 
         name = product.getName();
         isFood = product.isFood();
+
+        SQLRequest.post("insert into intake (user_pref_id, product_id, kcal, date)\n" +
+                "values(" + settingsManager.getID() + ", " + id + ", " + calories + ", '" + productPointsFileName + "');", true, ShowProductActivity.this);
+
         ShowEatenProduct product = new ShowEatenProduct(amount, protein, carbohydrates, fats, calories, time,  name);
         showeatenProducts.add(product);
 

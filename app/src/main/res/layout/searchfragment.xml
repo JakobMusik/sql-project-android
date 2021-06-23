@@ -19,57 +19,75 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/app_name" />
+        app:title="@string/app_name">
 
-    <TextView
-        android:id="@+id/featureText1"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:text="Search by cam"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/searchBtn1"
+    </com.databaseproj.caltracker.view.Coolbar>
+
+    <ImageButton
+        android:id="@+id/searchBtn4"
+        style="@style/SAICoolbarImageButton"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/outline_sports_mma_black_48"
+        app:layout_constraintBottom_toTopOf="@+id/featureText2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintHorizontal_bias="0.78"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coolbar_main"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/featureText2"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:text="Search Gauss"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/searchBtn2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.82"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coolbar_main"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.683" />
 
     <TextView
         android:id="@+id/featureText3"
         android:layout_width="120dp"
         android:layout_height="35dp"
-        android:text="Search Web"
+        android:gravity="center"
+        android:text="Web"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/searchBtn3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coolbar_main"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.978" />
+
+    <TextView
+        android:id="@+id/featureText2"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:text="GaussDB"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/searchBtn2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coolbar_main"
+        app:layout_constraintVertical_bias="0.976" />
+
+    <TextView
+        android:id="@+id/featureText1"
+        android:layout_width="116dp"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:text="Camera"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/searchBtn1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coolbar_main"
+        app:layout_constraintVertical_bias="0.976" />
 
     <ImageButton
         android:id="@+id/searchBtn1"
         style="@style/SAICoolbarImageButton"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="132dp"
         android:src="@drawable/outline_add_a_photo_black_48"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
@@ -77,11 +95,11 @@
         style="@style/SAICoolbarImageButton"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="132dp"
         android:src="@drawable/outline_account_tree_black_48"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintHorizontal_bias="0.787"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
@@ -92,10 +110,24 @@
         android:src="@drawable/outline_public_black_48"
         app:layout_constraintBottom_toTopOf="@+id/featureText1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coolbar_main"
-        app:layout_constraintVertical_bias="0.768" />
+        app:layout_constraintVertical_bias="0.683" />
+
+    <TextView
+        android:id="@+id/featureText4"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:text="Social"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/searchBtn3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coolbar_main"
+        app:layout_constraintVertical_bias="0.978" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

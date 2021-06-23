@@ -15,6 +15,7 @@ import com.databaseproj.caltracker.R;
 import com.databaseproj.caltracker.view.FeatureActivity1;
 import com.databaseproj.caltracker.view.FeatureActivity2;
 import com.databaseproj.caltracker.view.FeatureActivity3;
+import com.databaseproj.caltracker.view.FeatureActivity4;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +36,7 @@ public class SearchFragment extends Fragment {
     private ImageButton searchBtn1;
     private ImageButton searchBtn2;
     private ImageButton searchBtn3;
+    private ImageButton searchBtn4;
     private TextView searchTxt_test;
 
     public SearchFragment() {
@@ -77,6 +79,8 @@ public class SearchFragment extends Fragment {
         searchBtn1 = view.findViewById(R.id.searchBtn1);
         searchBtn2 = view.findViewById(R.id.searchBtn2);
         searchBtn3 = view.findViewById(R.id.searchBtn3);
+        searchBtn4 = view.findViewById(R.id.searchBtn4);
+
         searchTxt_test = view.findViewById(R.id.featureText1);
 
         searchBtn1.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +104,14 @@ public class SearchFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), FeatureActivity3.class);
                 startActivityForResult(intent, 3);
+            }
+        });
+
+        searchBtn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), FeatureActivity4.class);
+                startActivityForResult(intent, 4);
             }
         });
 

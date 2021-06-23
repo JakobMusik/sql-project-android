@@ -263,7 +263,7 @@ public class UserActivity extends AppCompatActivity {
             return;
         }
 
-        settingsManager.setSex(man.isChecked() ? MALE : FEMALE, this);
+        settingsManager.setGender(man.isChecked() ? MALE : FEMALE, this);
         settingsManager.setUnits(imperial.isChecked() ? US_UNITS : EU_UNITS, this);
         settingsManager.setName(nameET.getText().toString(), this);
         settingsManager.setEmail(emailET.getText().toString(), this);
@@ -275,7 +275,7 @@ public class UserActivity extends AppCompatActivity {
 
 
         UpdateRemoteDB.update(UserActivity.this);
-        Toast.makeText(UserActivity.this, "Saving to server database...", Toast.LENGTH_LONG).show();
+        Toast.makeText(UserActivity.this, "Saving to server database...", Toast.LENGTH_SHORT).show();
 
 
         Intent intent = new Intent(this, EditPlanActivity.class);

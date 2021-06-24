@@ -99,7 +99,7 @@ public class FeatureActivity4 extends AppCompatActivity {
                 String date_str = date.get(Calendar.DAY_OF_MONTH) + "_" + (date.get(Calendar.MONTH) + 1) + "_" + date.get(Calendar.YEAR);
                 String str = "with name_kcal as (\n    select name, sum(kcal) as sum from\n    user_pref join intake i on user_pref.id = i.user_pref_id\n    where date = '" +
                         date_str + "'\n    group by name\n)\nselect name, n1.sum from name_kcal n1\nwhere n1.sum > all (\n    select n2.sum from name_kcal n2\n    where n2.name = '" +
-                        name_str + "'\n)\norder by sum desc;";
+                        name_str + "'\n)\norder by sum desc\nlimit 10;";
                 sendQuery(str);
             }
         });
@@ -115,7 +115,7 @@ public class FeatureActivity4 extends AppCompatActivity {
                 String date_str = date.get(Calendar.DAY_OF_MONTH) + "_" + (date.get(Calendar.MONTH) + 1) + "_" + date.get(Calendar.YEAR);
                 String str = "with name_kcal as (\n    select name, sum(kcal) as sum from\n    user_pref join intake i on user_pref.id = i.user_pref_id\n    where date = '" +
                         date_str + "'\n    group by name\n)\nselect name, n1.sum from name_kcal n1\nwhere n1.sum < all (\n    select n2.sum from name_kcal n2\n    where n2.name = '" +
-                        name_str + "'\n)\norder by sum;";
+                        name_str + "'\n)\norder by sum\nlimit 10;";
                 sendQuery(str);
             }
         });
